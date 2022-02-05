@@ -1,0 +1,27 @@
+public class Solution {
+public int braces(String A) {
+  Stack<Character> chstack = new Stack<>();
+  char[] eq = A.toCharArray();
+	for (char ch : eq) {
+	    if (ch == ')') {
+		char top = chstack.peek();
+		chstack.pop();
+		boolean redundant = true;
+		while (top != '(') {
+		   if (top == '+' || top == '-' || top == '*' || top == '/') {
+				redundant = false;
+				}
+			top = chstack.peek();
+			chstack.pop();
+				}
+		   if (redundant == true) {
+			return 1;
+				}
+			} 
+                   else {
+			chstack.push(ch);
+			}
+		}
+		return 0;
+    }
+}
